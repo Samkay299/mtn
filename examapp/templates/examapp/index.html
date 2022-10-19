@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    .form_1 {
+      width: 50%
+    }
+
+    body {
+      background-color: gold;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-top: 5%;
+    }
+
+    
+  </style>
+
+   <title>Document</title>
+</head>
+
+<body>
+
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expa nded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+        <ul class="navbar-nav text-warning">
+          <li class="nav-item ">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'about' %}">about us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">contact</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'register' %}">register</a>
+          </li>
+         
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'register_user' %}">Sign Up!</a>
+          </li>
+          {% endif %}
+         
+
+
+          <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul> -->
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+      </div>
+    </div>
+  </nav>
+  <div>
+    {% if messages %}
+    {% for messages in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{messages}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+  {% endif %}
+</div>
+{% block content %}
+
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-4 p-4">
+    <div class="col">
+      <div class="card h-100 bg-dark text-light">
+    <img src="./mtn image.jpg" alt="">
+        <div class="card-body">
+          <h5 class="card-title">MTN 5G Router</h5>
+          <p class="card-text">MTN Broadband 5G Router offers faster speed and performance than 3G & 4G. Be among the first Nigerians to experience this incredible technology. Order Your Device. Highlights: Customer Service Available, Mobile App Available</p>
+        </div>
+        <!-- <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div> -->
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body bg-dark text-light">
+          <h5 class="card-title">Mtn customer services</h5>
+          <p class="card-text">Pick a time to visit our store. Schedule appointment ; Thinking of Changing your appointment. Reschedule ; Switch to MTN 5G.</p>
+        </div>
+        <!-- <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div> -->
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body bg-dark text-light">
+          <h5 class="card-title">Register your SIM Card</h5>
+          <p class="card-text">Register your SIM Card and link your NIN and get upgraded to our 5G broadband network authomatically to enjoy splendid services.</p>
+        </div>
+        <!-- <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-warning text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <!-- Left -->
+
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>Mtn Nigeria Limited
+            </h6>
+            <p>
+              Privacy Policy & Data Protection
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Services
+            </h6>
+            <p>
+              <a href="https://www.mtn.ng/personal/services/" class="text-reset">prepaid/postpaid calls</a>
+            </p>
+            <p>
+              <a href="https://www.mtn.ng/personal/services/" class="text-reset">SIM card replacement</a>
+            </p>
+            <p>
+              <a href="https://www.mtn.ng/personal/services/" class="text-reset">SIM Swap</a>
+            </p>
+            <p>
+              <a href="https://www.mtn.ng/personal/services/" class="text-reset">Data Offer</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="https://www.mtn.ng/business/" class="text-reset">Business</a>
+            </p>
+            <p>
+              <a href="https://www.mtn.ng/just-for-you/" class="text-reset">JustForYou</a>
+            </p>
+            <p>
+              <a href="https://community.mtnnigeria.net/" class="text-reset">community</a>
+            </p>
+            <p>
+              <a href="https://mtnnigeria.egain.cloud/kb/get-help/home" class="text-reset">Help contact</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3"></i> Lagos, LG 10012, NGN</p>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              info@mtnnigeria.com
+            </p>
+            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+         © 2022 MTN Nigeria Communications PLC, All rights reserved
+      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Mtnnigerialimited.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

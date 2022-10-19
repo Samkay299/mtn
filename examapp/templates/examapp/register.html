@@ -1,0 +1,18 @@
+
+{% extends 'examapp/index.html' %}
+   
+{% block content %}
+<center>
+    <h1>REGISTER YOUR MTN SIM HERE</h1>
+{% if submitted %}
+    Hurray, Your Form is Submitted!!
+{% else %}
+    <form class="container form_1" action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <input type="submit" value="SUBMIT" name="Register" class="btn btn-secondary">
+    </form>
+{% endif %}
+</center>  
+{% endblock content %}
